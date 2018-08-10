@@ -2,23 +2,23 @@
 
 {% block content %}
 <div class="card mx-auto" style="width: 60%;">
- <h2 class="card-header display-5">List of Chores:</h2>
-    <ul class="list-group">
-        {% if object_list %}
-       {% for chore in object_list %}
-        <li class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-            <a href="{{ chore.get_absolute_url }}"><h5 class="text-left">{{ chore }}</h5></a>
-            <small>{{ chore.date_end }}</small>
-            </div>
-            <div>
+  <h2 class="card-header display-5">This week:{{ start_date }}</h2>
+  <ul class="list-group">
+    {% if object_list %}
+      {% for chore in object_list %}
+        <li class="list-group-item flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="text-left">{{ chore }}</h5>
+            <p><span class="badge badge-pill badge-primary">{{ chore.user }}</span></p>
+          </div>
+          <div>
             <p class="text-left">{{ chore.description }}</p>
-            </div>
+          </div>
         </li>
-    {% endfor %}
+      {% endfor %}
     {% else %}
-        <li class="list-group-item">There are no chores.</li>
+      <li class="list-group-item">There are no chores.</li>
     {% endif %}
-    </ul>
+  </ul>
 </div>
 {% endblock %}

@@ -1,24 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   {% block title %}<title>Chorz</title>{% endblock %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-      <h3 class="my-0 mr-md-auto font-weight-normal">Chorz</h5>
-      <nav class="my-2 my-md-0 mr-md-3">
-      </nav>
-      <a class="btn btn-outline-primary" href="#">Login</a>
-</div>
-
- <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-{% block content %}      {% endblock %}
-
-    </div>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h3 class="main_link my-0 mr-md-auto font-weight-normal"><a class="main_link text-dark" href="/">Chorz</a></h3>
+    <nav class="my-2 my-md-0 mr-md-3"></nav>
+    <a class="btn btn-outline-primary" href="/accounts/login">Login</a>
+  </div>
+  <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    {% block content %}{% endblock %}
+  </div>
 </body>
+
 </html>
