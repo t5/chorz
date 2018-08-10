@@ -1,8 +1,17 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<div class="card mx-auto" style="width: 60%;">
-  <h2 class="card-header display-5">This week:{{ start_date }}</h2>
+<div class="jumbotron mx-auto" style="width: 75%;">
+  <h1 class="display-5">Today is {{ this_date }}</h1>
+  {% if logged_in_user.username %}
+      <hr class="my-4">
+      <p class="lead">Welcome <span class="badge badge-primary align-middle">{{ logged_in_user.username }}</span></p>
+  {% else %}
+  {% endif %}
+</div>
+
+<div class="card mx-auto" style="width: 75%;">
+  <h2 class="card-header display-5">{{ start_date }} - {{ end_date }}</h2>
   <ul class="list-group">
     {% if object_list %}
       {% for chore in object_list %}

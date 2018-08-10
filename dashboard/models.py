@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import django
 # Create your models here.
 
 import datetime
@@ -9,7 +10,7 @@ class Chore(models.Model):
 
     name = models.CharField(max_length=50, help_text='Enter the chore name')
     description = models.TextField(help_text='Enter the description for the chore')
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -20,4 +21,4 @@ class Chore(models.Model):
 class Scheduler(models.Model):
     """Schedules the rotation of chores"""
 
-    start = models.DateField(auto_now=True)
+    start = models.DateField(default=django.utils.timezone.now)
