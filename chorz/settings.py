@@ -55,7 +55,7 @@ ROOT_URLCONF = 'chorz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates',],
+        'DIRS': ['./chorz/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

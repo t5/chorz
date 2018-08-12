@@ -5,10 +5,19 @@
   <h1 class="display-5">Today is {{ this_date }}</h1>
   {% if logged_in_user.username %}
       <hr class="my-4">
-      <p class="lead">Welcome <span class="badge badge-primary align-middle">{{ logged_in_user.username }}</span></p>
+      <p class="lead">Welcome <span class="badge badge-pill badge-primary align-middle">{{ logged_in_user.username }}</span></p>
+      {% if users_chore %}
+      <p class="lead">Have you completed <span class="font-weight-bold">{{ users_chore }}</span>?</p>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn {% if users_chore.is_done %}btn-danger{% else %}btn-success{% endif %}" value="{% if users_chore.is_done %}No{% else %}Yes{% endif %}" name="change">
+      </form>
+      {% endif %}
   {% else %}
+  <p class="lead"><a href="accounts/login">Login</a> to view/complete your weekly chore.</p>
   {% endif %}
 </div>
+
 
 <div class="card mx-auto" style="width: 75%;">
   <h2 class="card-header display-5">{{ start_date }} - {{ end_date }}</h2>
@@ -17,10 +26,19 @@
       {% for chore in object_list %}
         <li class="list-group-item flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="text-left">{{ chore }}</h5>
-            <p><span class="badge badge-pill badge-primary">{{ chore.user }}</span></p>
+            <h5 class="text-left">
+                {{ chore }} -    
+                <span class="badge badge-pill badge-primary">
+                    {{ chore.user }}
+                </span>
+            </h5>
+            {% if chore.is_done %}
+            <h5><span class="badge badge-pill badge-success">Done!</span></h5>
+            {% else %}
+            <h5><span class="badge badge-pill badge-danger">Not Done!<span></h5>
+            {% endif %}
           </div>
-          <div>
+          <div class="d-flex w-100 justify-content-between">
             <p class="text-left">{{ chore.description }}</p>
           </div>
         </li>

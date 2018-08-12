@@ -11,6 +11,8 @@ class Chore(models.Model):
     name = models.CharField(max_length=50, help_text='Enter the chore name')
     description = models.TextField(help_text='Enter the description for the chore')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    
+    is_done = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name']
